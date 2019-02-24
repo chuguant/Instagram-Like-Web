@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Instacram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- You can add your styles and scripts here -->
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/provided.css" />
+
+    <script type="module" src="src/helpers.js"></script>
+    <script type="module" src="src/api.js"></script>
+
+    <!-- New Bootstrap4 core CSS file -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- jQuery file. Be sure to introduce before bootstrap.min.js -->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Popper.min.js for popups, prompts, drop-down menus -->
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+
+    <!-- Latest Bootstrap4 core JavaScript files -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/login.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+<body>
+    <!-- The element after login -->
+    <div class='maindall'>
+        <div class="container hide" id='main'>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="page-header">
+                        <h1>
+                            Blog
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-8 column ">
+                    <div class="alert alert-danger hide" id='error_left'>
+                    </div>
+                    <div class='tab main-tab p-12'>
+
+                        <div class="row clearfix">
+                            <div class="col-md-12 column" style="text-align: right;">
+                                <div class="btn-group">
+                                    <button class="btn btn-primary" type="button" id='btn-myposts'> POSTS</button>
+                                    <button class="btn btn-info" type="button" data-toggle="modal"
+                                    data-target="#search-modal" id='btn-search'>SEARCH</button>
+                                    <button class="btn btn-info" type="button" id='btn-myinfo'> MY INFO</button>
+                                    <button class="btn btn-info" id='addposts-modal-btn' type="button" data-toggle="modal"
+                                        data-target="#addposts-modal">ADD
+                                        POSTS</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <ul class="my-following-main main-item hide">
+                        <li class='my-following-main-li'>
+                            <h5>asdad</h5>
+                            <button class="btn btn-default btn-sm" style=" margin-right: 12px;">
+                                posts
+                                <span class="text-primary "></span>
+                            </button>
+                            <button class="btn btn-default btn-sm" style=" margin-right: 12px;">
+                                followed
+                                <span class="text-primary "></span>
+                            </button>
+                        </li>
+                    </ul> -->
+                    <!-- <ul class="my-followed-main main-item hide">
+
+                    </ul> -->
+                    <ul id='my-posts-main' class="my-posts-main main-item ">
+                        <!-- <li class='my-posts-main-li'>
+                                <div class='posts-item-main'>
+                                    <div class="posts-img-div">
+                                        <img src="data:image/png;base64," class="img-thumbnail " width="100" height="100">
+                                    </div>
+                                    <div class="posts-description">
+                                        <h5>asd <span class='posts-time'>2018-04-05</span></h5>
+                                        I let my phone ring into silence, since I am not who they're looking for, although
+                                        they might have the right number, I'm not the right person anymore. - E.H.
+                                    </div>
+                                    <img src="data:image/png;base64," class="img-src " >
+                                </div>
+                                <div class="infos-main">
+                                    <button class="btn btn-default btn-sm" style=" margin-right: 12px;">
+                                        comments
+                                        <span class="text-primary">400</span>
+                                    </button>
+                                    <button class="btn btn-default btn-sm">like
+        
+                                        <span class="text-primary">400</span>
+                                    </button>
+                                </div>
+                                <div class="comments-main">
+                                    <ol class=" list-unstyled comments-ol">
+                                        <li>
+                                            <a class='comments-username'>asdf</a>
+                                            <span class="comments-text text-info">Lorem ipsum dolor sit amet</span>
+                                        </li>
+                                        <li>
+                                            <a class='comments-username'>asdf</a>
+                                            <span class="comments-text text-info">Lorem ipsum dolor sit amet</span>
+                                        </li>
+                                        <li>
+                                            <a class='comments-username'>asdf</a>
+                                            <span class="comments-text text-info">Lorem ipsum dolor sit amet</span>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li> -->
+                    </ul>
+
+                </div>
+                <div class="col-md-4 column">
+                    <div class="user-main tab">
+                        <h3 id='name' data-toggle="modal" data-target="#upd-modal" class='user-name'> </h3>
+                        <div class="user-info">
+                            <div class="user-item">
+                                <p class="user-item-num" id='following_num'>0</p>
+                                <p class="user-item-txt">FOLLOWING</p>
+                            </div>
+                            <div class="user-item user-item-center">
+                                <p class="user-item-num" id='followed_num'>0</p>
+                                <p class="user-item-txt">FOLLOWED</p>
+                            </div>
+                            <div class="user-item">
+                                <p class="user-item-num" id='posts_num'>0</p>
+                                <p class="user-item-txt">POSTS</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="noti" id='notice-main'>
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The element after login -->
+
+    <!-- Login box -->
+    <div class="login" id='login'>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="jumbotron">
+                        <h1>
+                            Hello!
+                        </h1>
+                        <p>
+                            Welcome to blog
+
+                            <p>You need to log in to enter the system. If you do not have an account, you can click on
+                                registration.</p>
+                        </p>
+                    </div>
+
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="login-username" class="col-sm-2 control-label">Username</label>
+                            <div class="col-sm-12">
+                                <input type="email" class="form-control" id="login-username" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-12">
+                                <input type="password" class="form-control" id="login-password" />
+                            </div>
+                        </div>
+                        <p class='red' id='login-error'></p>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button id='login-submit' type="submit" class="btn btn-default">Sign in</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Signup</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Login box end -->
+
+
+
+    <!-- Registration box -->
+    <div class="modal fade" id="signup-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Head of Modal box -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Signup</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal frame body -->
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="signup-username" class="col-sm-2 control-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="signup-username" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="signup-password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="signup-email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-name" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="signup-name" />
+                            </div>
+                        </div>
+                        <p class='red' id='signup-error'></p>
+                    </form>
+                </div>
+
+                <!-- Bottom of modal box -->
+                <div class="modal-footer">
+                    <button type="Submit" id='signup-submit' class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Registration box end -->
+
+    <!--Modify personal information bullet box -->
+    <div class="modal fade" id="upd-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal box head -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Uese Info</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal frame body -->
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="upd-name" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="upd-name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="upd-password" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="upd-password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="upd-email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="upd-email" />
+                            </div>
+                        </div>
+                        <p class='red' id='upd-error'></p>
+                    </form>
+                </div>
+
+                <!-- Modal frame body -->
+                <div class="modal-footer">
+                    <button id='upd-submit' type="Submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modify personal information box end -->
+
+    <!--Post box -->
+    <div class="modal fade" id="addposts-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- head of Modal box -->
+                <div class="modal-header">
+                    <h4 class="modal-title">CREATE POSTS</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal frame body -->
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="addposts-description" class="col-sm-2 control-label">description</label>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="addposts-description" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addposts-src" class="col-sm-2 control-label">img</label>
+                            <div class="col-sm-12">
+                                <input type="file" class="form-control" id="addposts-src" accept="image/png" />
+                            </div>
+                        </div>
+                        <p class='red' id='post-error'></p>
+                    </form>
+                </div>
+
+                <!-- Bottom of modal box -->
+                <div class="modal-footer">
+                    <button id='post-submit' type="Submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- post box end -->
+
+    <!--Update post box -->
+    <div class="modal fade" id="updposts-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal box head -->
+                <div class="modal-header">
+                    <h4 class="modal-title">EDIT POSTS</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal frame body -->
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="updposts-description" class="col-sm-2 control-label">description</label>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="updposts-description" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="updposts-src" class="col-sm-2 control-label">img</label>
+                            <div class="col-sm-12">
+                                <input type="file" class="form-control" id="updposts-src" accept="image/png" />
+                            </div>
+                        </div>
+                        <p class='red' id='updpost-error'></p>
+                    </form>
+                </div>
+
+                <!-- Bottom of modal box -->
+                <div class="modal-footer">
+                    <button id='updpost-submit' type="Submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Update post box end -->
+
+    <!--Post comment box -->
+    <div class="modal fade" id="comment-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Head of Modal box -->
+                <div class="modal-header">
+                    <h4 class="modal-title">COMMENT</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal box body -->
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="comment-txt" class="col-sm-2 control-label">comment</label>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="comment-txt" rows="3"></textarea>
+                                <input id='comment_id' type="hidden">
+                            </div>
+                        </div>
+                        <p class='red' id='comment-error'></p>
+                    </form>
+                </div>
+
+                <!-- Bottom of modal box -->
+                <div class="modal-footer">
+                    <button id='comment-submit' type="Submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Post commentary box end -->
+
+    <!--Comment list -->
+    <div class="modal fade" id="comments-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal box body -->
+                <div class="modal-body">
+                    <div class="comments-main">
+                        <ol class=" list-unstyled comments-ol" id='comment-ol'>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Comment list end -->
+
+    <!--Likes list box -->
+    <div class="modal fade" id="likes-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal box body -->
+                <div class="modal-body">
+                    <div class="comments-main">
+                        <ol class=" list-unstyled comments-ol" id='likes-ol'>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Likes list box end -->
+
+    <!--User information box -->
+    <div class="modal fade" id="userinfo-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal box body -->
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-12 column">
+                            <h5 id='user-info-username'>
+                                </h3>
+
+                                <div class="btn-group">
+                                    <button type="button" id='user-info-post' class="btn btn-info"></button>
+                                    <button type="button" id='user-info-following' class="btn btn-info"></button>
+                                    <button type="button" id='user-info-followed' class="btn btn-info"></button>
+                                    <button type="button" id='user-info-follow' class="btn btn-primary"></button>
+
+                                </div>
+
+                        </div>
+                        <div class="col-md-12 column">
+                            <ul id='user-posts-main' class="user-posts-main ">
+
+                                <!-- <li class='user-posts-main-li'>
+                                        <div class='posts-item-main'>
+                                            <div class="posts-img-div">
+                                                <img src="data:image/png;base64," class="img-thumbnail " width="100" height="100">
+                                            </div>
+                                            <div class="posts-description">
+                                                <h5>asd <span class='posts-time'>2018-04-05</span></h5>
+                                                I let my phone ring into silence, since I am not who they're looking for, although
+                                                they might have the right number, I'm not the right person anymore. - E.H.
+                                            </div>
+                                        </div>
+                                        <div class="infos-main">
+                                            <button class="btn btn-default btn-sm" style=" margin-right: 12px;">
+                                                comments
+                                                <span class="text-primary">400</span>
+                                            </button>
+                                            <button class="btn btn-default btn-sm">like
+                
+                                                <span class="text-primary">400</span>
+                                            </button>
+                                        </div>
+                                    </li> -->
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- User information popup -->
+
+        <!--Search user information box -->
+        <div class="modal fade" id="search-modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                              <!-- Head of Modal box -->
+                <div class="modal-header">
+                        <h4 class="modal-title">SEARCH USER</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                        <!-- Modal box body -->
+                        <div class="modal-body">
+                                <form action="/action_page.php">
+     
+                                
+                                    <div class="input-group mb-3">
+                                      <input type="text" class="form-control" placeholder="username" id="search_username" >
+                                      <div class="input-group-append">
+                                        <span class="input-group-text" id="search_btn">search</span>
+                                      </div>
+                                    </div>
+                                  </form>
+                                <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    username
+                                                </th>
+                                                <th>
+                                                    posts
+                                                </th>
+                                                <th>
+                                                    
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id='search_users'>
+                                            
+                                            
+                                        </tbody>
+                                    </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Search user information box end -->
+
+
+    <script type="module" src="src/main.js"></script>
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
+                // registration success
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function (err) {
+                // registration failed
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- This is an example app structure -->
+<!-- <header class='banner'>
+        <h1>Instacram</h1>
+        <ul class='nav'>
+           
+                <li class="nav-item"> <input type="file"/>   </li> 
+          
+            <li class='nav-item'>Icon</li>
+            <li class='nav-item'>Icon</li>
+        </ul>
+    </header> -->
+<!-- <main role='main'>
+      
+        <div id='large-feed'>
+        
+        </div>
+    </main>
+    <footer>
+        <p>Instacram example</p>
+    </footer> -->

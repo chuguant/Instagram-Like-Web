@@ -1,0 +1,155 @@
+body{
+    background-color: #b4daf0;
+    padding-bottom: 40px;
+}
+.container{
+    background-color: #b4daf0;
+}
+.maindall{
+    background-color: #b4daf0;
+}
+
+.tab{
+    background: #ffffff;
+    border-radius: 6px;
+}
+.main-tab{
+    margin-right: 10px;
+    overflow: hidden;
+}
+ .p-12{
+     padding: 20px;
+ }
+.user-main {
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+ .user-name{
+     text-align: center;
+     cursor: pointer;
+ }
+ .user-name:hover{
+     color: #007bff!important
+ }
+
+ .user-info{
+     text-align: center;
+     margin: 20px auto 0 auto;
+     height: 60px;
+     overflow: hidden;
+}
+
+ .user-item{
+     float: left;
+     width: 33%;
+     text-align: center;
+ }
+.user-item-num{
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.user-item-txt{
+    color: #888888;
+    font-size: 12px;
+}
+.user-item-center{
+    border-left:1px solid #888888;
+    border-right:1px solid #888888;
+}
+
+.my-posts-main{
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.my-posts-main-li{
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.posts-img-div{
+    width: 20%;
+    height: 100px;
+    float: left;
+}
+.posts-description{
+    float: left;
+    width: 80%;
+}
+
+.posts-item-main{
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.infos-main{
+    clear: both;
+    text-align: left;
+  
+}
+.comments-main{
+padding: 20px 0;
+}
+.comments-ol li{
+border-bottom: 1px solid #888888;
+margin-bottom: 8px;
+}
+.comments-username{
+    color: #007bff!important;
+    cursor: pointer;
+    padding: 8px 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.posts-time{
+    font-size: 12px;
+    color: #888888;
+}
+.my-following-main,.my-followed-main{
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.my-following-main-li,.my-followed-main-li{
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 12px;
+}
+.red{
+    color: red;
+}
+#login-error{
+    margin-left: 20px;
+}
+.hide{
+    display: none!important;
+}
+.author{
+    cursor: pointer;
+}
+.author:hover{
+    color: #007bff!important;
+}
+
+.user-posts-main{
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.user-posts-main-li{
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 12px;
+}
+#search_btn{
+    cursor: pointer;
+}
